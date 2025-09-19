@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibo</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .recibo-container {
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .recibo {
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 8px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 25px;
+        }
+        .titulo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+        .numero-nit-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .numero, .nit {
+            font-size: 18px;
+            display: flex;
+            align-items: flex-end;
+            margin-left: 20px;
+            flex-grow: 1;
+            margin-bottom: 5px;
+        }
+        .info-line {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .label {
+            font-size: 14px;
+            margin-right: 5px;
+            color: #555;
+            white-space: nowrap;
+        }
+        .input-line {
+            flex-grow: 1;
+            border: none;
+            border-bottom: 1px solid #333;
+            padding: 2px;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            background-color: transparent;
+            min-width: 50px;
+        }
+        .input-line:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        .box {
+            border: 1px solid #333;
+            padding: 10px;
+            min-height: 50px;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+        .firma {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-top: 40px;
+        }
+        .linea-firma {
+            width: 250px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 5px;
+        }
+        .label-firma {
+            font-size: 12px;
+            color: #777;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        @media print {
+            body {
+                background-color: white;
+            }
+            .recibo-page {
+                box-shadow: none;
+                height: auto;
+            }
+            .button-container {
+                display: none;
+            }
+            @page {
+                size: legal;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="recibo-container" id="recibo-a-descargar">
+        <div class="recibo">
+            <div class="header">
+                <span class="titulo">RECIBO</span>
+                <div class="numero-nit-container">
+                    <span class="numero">Nº
+                        <input type="text" id="recibo-numero" class="input-line" style="width: 100px;">
+                    </span>
+                    <span class="nit">NIT
+                        <input type="text" class="input-line">
+                    </span>
+                </div>
+            </div>
+            <div class="info-line">
+                <span class="label">Lugar y fecha de expedición</span>
+            </div>
+            <div class="info-line">
+                <span class="label">En</span>
+                <input type="text" class="input-line lugar" id="lugar" value="Guatemala, Mixco">
+                <span class="label">a</span>
+                <input type="text" class="input-line dia" id="dia" style="width: 40px;">
+                <span class="label">de</span>
+                <input type="text" class="input-line mes" id="mes" style="width: 100px;">
+                <span class="label">de</span>
+                <input type="text" class="input-line anio" id="anio" style="width: 70px;">
+            </div>
+            <div class="info-line">
+                <span class="label">Recibí de</span>
+                <input type="text" class="input-line" id="nombre-recibe">
+            </div>
+            <div class="info-line">
+                <span class="label">la cantidad de Q</span>
+                <input type="number" class="input-line cantidad-numero" id="cantidad-numero" step="0.01">
+            </div>
+            <div class="info-line">
+                <span class="label">Cantidad en letra</span>
+            </div>
+            <div class="info-line box">
+                <input type="text" class="input-line cantidad-letra" id="cantidad-letra" placeholder="Escribe aquí la cantidad en letra">
+            </div>
+            <div class="info-line">
+                <span class="label">Por concepto de</span>
+                <input type="text" class="input-line">
+            </div>
+            <div class="info-line">
+                <input type="text" class="input-line">
+            </div>
+            <div class="firma">
+                <div class="linea-firma"></div>
+                <div class="label-firma">Nombre y firma de quien recibe</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="button-container">
+        <button id="descargar-pdf">Descargar como PDF</button>
+    </div>
+
+    <!-- Bibliotecas de JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/numeros-a-letras@1.0.1/numeros-a-letras.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const numeroReciboInput = document.getElementById('recibo-numero');
+            const cantidadNumeroInput = document.getElementById('cantidad-numero');
+            const cantidadLetraInput = document.getElementById('cantidad-letra');
+            const nombreRecibeInput = document.getElementById('nombre-recibe');
+            
+            const fechaHoy = new Date();
+            const dia = fechaHoy.getDate();
+            const mes = fechaHoy.toLocaleString('es-ES', { month: 'long' });
+            const anio = fechaHoy.getFullYear();
+            
+            // Llenar la fecha automáticamente
+            document.getElementById('dia').value = dia;
+            document.getElementById('mes').value = mes;
+            document.getElementById('anio').value = anio;
+
+            // Gestionar el número de recibo correlativo
+            let numeroRecibo = localStorage.getItem('numeroRecibo') || 1;
+            numeroReciboInput.value = String(numeroRecibo).padStart(5, '0');
+
+            // Convertir número a letra
+            cantidadNumeroInput.addEventListener('input', (e) => {
+                const cantidadNumero = parseFloat(e.target.value);
+                if (!isNaN(cantidadNumero)) {
+                    cantidadLetraInput.value = NumerosALetras(cantidadNumero, {
+                        plural: 'quetzales',
+                        singular: 'quetzal',
+                        centavoPlural: 'centavos',
+                        centavoSingular: 'centavo'
+                    });
+                } else {
+                    cantidadLetraInput.value = '';
+                }
+            });
+
+            // Función para actualizar el número después de la descarga
+            document.getElementById('descargar-pdf').addEventListener('click', function() {
+                const reciboContainer = document.getElementById('recibo-a-descargar');
+                const reciboHTML = reciboContainer.innerHTML;
+                
+                // Creación de un contenedor para los dos recibos en el PDF
+                const contenedorDoble = document.createElement('div');
+                contenedorDoble.style.margin = '0';
+                contenedorDoble.style.padding = '1cm'; // 1cm de padding en todos los lados
+                contenedorDoble.innerHTML = `
+                    <div style="width: 100%;">${reciboHTML}</div>
+                    <div style="width: 100%; margin-top: 3cm;">${reciboHTML}</div>
+                `;
+
+                const options = {
+                    margin: 0,
+                    filename: `recibo_${nombreRecibeInput.value.replace(/ /g, '_')}_${dia}_${mes}_${anio}.pdf`,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: {
+                        unit: 'mm',
+                        format: 'legal',
+                        orientation: 'portrait'
+                    }
+                };
+
+                html2pdf().set(options).from(contenedorDoble).save().then(() => {
+                    let nuevoNumero = parseInt(numeroRecibo) + 1;
+                    localStorage.setItem('numeroRecibo', nuevoNumero);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
