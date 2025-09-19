@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Escuela Particular Mixta Pablo VI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Animación para el botón */
+    .btn-animate:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    /* Fondo animado para el header */
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .animated-bg {
+      background: linear-gradient(270deg, #4f46e5, #3b82f6, #06b6d4, #4f46e5);
+      background-size: 800% 800%;
+      animation: gradientBG 15s ease infinite;
+    }
+    /* Barra de menú fija bajo el encabezado */
+    nav.menu-bar {
+      background-color: #4f46e5; /* Indigo-600 */
+      width: 100%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 50;
+    }
+    nav.menu-bar ul {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0.5rem 0;
+      list-style: none;
+      gap: 2rem;
+    }
+    nav.menu-bar ul li a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      display: block;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      border-radius: 0.375rem; /* rounded-md */
+    }
+    nav.menu-bar ul li a:hover,
+    nav.menu-bar ul li a:focus {
+      background-color: #4338ca; /* Indigo-700 */
+      color: #dbeafe; /* Indigo-100 */
+      outline: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="animated-bg text-white py-20 px-6 text-center shadow-lg">
+    <!-- Espacio para logo -->
+    <div class="mx-auto mb-6 w-32 h-32 rounded-full bg-white flex items-center justify-center shadow-lg">
+      <!-- Aquí puedes colocar tu logo, por ejemplo una imagen -->
+      <!-- Ejemplo: <img src="ruta-del-logo.png" alt="Logo Escuela" class="w-28 h-28 object-contain" /> -->
+      <span class="text-indigo-600 font-bold text-xl select-none"><img src="logo.jpeg" alt=""></span>
+    </div>
+
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">
+      Escuela Particular Mixta Pablo VI
+    </h1>
+    <p class="text-lg md:text-2xl max-w-3xl mx-auto drop-shadow-md">
+      Formando líderes con valores, conocimiento y compromiso social.
+    </p>
+    <!-- Botón Contáctanos actualizado para ir a formulario.html -->
+    <a href="formulario.html" class="inline-block mt-8 bg-white text-indigo-600 font-semibold py-3 px-8 rounded-full shadow-lg btn-animate hover:bg-indigo-100" role="button">
+      Preincripcion Abierta
+    </a>
+  </header>
+
+  <!-- Barra de menú justo después del encabezado -->
+  <nav class="menu-bar" aria-label="Menú principal">
+    <ul>
+      <li><a href="requisitos.html" tabindex="0">Inscripciones</a></li>
+      <li><a href="#mision" tabindex="0">Misión</a></li>
+      <li><a href="#vision" tabindex="0">Visión</a></li>
+      <li><a href="#valores" tabindex="0">Valores</a></li>
+      <li><a href="#contacto" tabindex="0">Contacto</a></li>
+      <li><a href="#noticias" tabindex="0">Noticias</a></li>
+    </ul>
+  </nav>
+
+  <!-- Sección Misión y Visión -->
+  <section id="inicio" class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
+    <div id="mision" class="bg-white rounded-xl shadow-lg p-8 hover:shadow-indigo-400 transition-shadow">
+      <h2 class="text-3xl font-bold mb-4 text-indigo-600">Nuestra Misión</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Brindar una educación integral de calidad que fomente el desarrollo académico, ético y social de nuestros estudiantes, preparándolos para enfrentar los retos del mundo con responsabilidad y creatividad.
+      </p>
+    </div>
+    <div id="vision" class="bg-white rounded-xl shadow-lg p-8 hover:shadow-indigo-400 transition-shadow">
+      <h2 class="text-3xl font-bold mb-4 text-indigo-600">Nuestra Visión</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Ser reconocidos como un centro educativo líder en innovación pedagógica y formación de ciudadanos comprometidos con el bienestar de la sociedad y el respeto por el medio ambiente.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sección Valores -->
+  <section id="valores" class="bg-indigo-600 text-white py-16 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-10">Nuestros Valores</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="bg-indigo-500 rounded-lg p-6 shadow-lg hover:bg-indigo-400 transition-colors">
+          <h3 class="text-2xl font-semibold mb-2">Respeto</h3>
+          <p>Fomentamos el respeto hacia uno mismo, los demás y el entorno.</p>
+        </div>
+        <div class="bg-indigo-500 rounded-lg p-6 shadow-lg hover:bg-indigo-400 transition-colors">
+          <h3 class="text-2xl font-semibold mb-2">Responsabilidad</h3>
+          <p>Promovemos el compromiso y la responsabilidad en todas las acciones.</p>
+        </div>
+        <div class="bg-indigo-500 rounded-lg p-6 shadow-lg hover:bg-indigo-400 transition-colors">
+          <h3 class="text-2xl font-semibold mb-2">Solidaridad</h3>
+          <p>Impulsamos la ayuda mutua y el trabajo en equipo.</p>
+        </div>
+        <div class="bg-indigo-500 rounded-lg p-6 shadow-lg hover:bg-indigo-400 transition-colors">
+          <h3 class="text-2xl font-semibold mb-2">Excelencia</h3>
+          <p>Buscamos la mejora continua y la calidad en la educación.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Contacto -->
+  <section id="contacto" class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-4xl font-bold text-center mb-10 text-indigo-600">Contáctanos</h2>
+    <p class="text-center text-gray-700 mb-6">Por favor, utiliza el botón "Contáctanos" arriba para ir al formulario de contacto.</p>
+  </section>
+
+  <!-- Sección Noticias (vacía para ejemplo) -->
+  <section id="noticias" class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-4xl font-bold text-indigo-600 mb-8 text-center">Noticias</h2>
+    <p class="text-center text-gray-700">Próximamente agregaremos noticias y novedades del colegio.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 text-center py-6">
+    <p>© 2024 Escuela Particular Mixta Pablo VI. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>

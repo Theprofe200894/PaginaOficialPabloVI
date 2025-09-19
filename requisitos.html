@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripciones Ciclo Escolar 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals with Primary Accents -->
+    <!-- Application Structure Plan: A single-page, card-based interface was chosen for clarity and user focus. The main announcement is at the top, followed by three large, interactive cards representing each school level (Preprimario, Primario, Básico). This structure allows parents to immediately identify and engage with the information relevant to them. Clicking a card reveals a detailed checklist of required documents for that specific level, preventing information overload and creating a clean, task-oriented user flow. This is more intuitive and mobile-friendly than a simple static list. -->
+    <!-- Visualization & Content Choices: Report Info: Required folder colors for 3 school levels. -> Goal: Organize and inform. -> Presentation Method: Three distinct, color-coded HTML cards using Tailwind CSS. Each card's color (yellow, red, green) directly corresponds to the required folder color, creating a strong visual cue. -> Interaction: On-click JavaScript event toggles the visibility of a detailed document checklist within each card. This allows for progressive disclosure of information. -> Justification: This method is highly visual and interactive, making the simple information easy to digest and act upon without the need for complex charts. -> Library/Method: Vanilla JS for interaction, Tailwind CSS for styling. Confirmed NO SVG/Mermaid. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .details-section {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .details-section.open {
+            max-height: 500px;
+        }
+        .icon-folder {
+            display: inline-block;
+            width: 4rem;
+            height: 3rem;
+            border: 3px solid currentColor;
+            border-radius: 0.25rem 0.5rem 0.5rem 0.25rem;
+            position: relative;
+        }
+        .icon-folder::before {
+            content: '';
+            position: absolute;
+            top: -0.75rem;
+            left: -3px;
+            width: 1.5rem;
+            height: 0.5rem;
+            border-top: 3px solid currentColor;
+            border-left: 3px solid currentColor;
+            border-right: 3px solid currentColor;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto px-4 py-8 md:py-16">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 mb-2">
+                Inscripciones Nuevo Ingreso
+            </h1>
+            <p class="text-2xl md:text-4xl font-semibold text-gray-700">Ciclo Escolar 2026</p>
+        </header>
+
+        <section class="max-w-4xl mx-auto text-center mb-12">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-600">Requisitos de Papelería</h2>
+            <p class="text-lg text-gray-500">
+                Para completar la inscripción, se solicita amablemente traer la papelería completa del estudiante en un fólder tamaño oficio con gancho. Cada nivel tiene asignado un color de fólder específico para una mejor organización. Haga clic en el nivel correspondiente para ver los detalles.
+            </p>
+        </section>
+
+        <main class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+            
+            <div id="card-preprimario" class="interactive-card bg-white rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer overflow-hidden border-t-8 border-yellow-400">
+                <div class="p-6 text-center">
+                    <div class="text-yellow-500 mb-4">
+                        <span class="icon-folder"></span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Nivel Preprimario</h3>
+                    <p class="text-lg font-semibold text-yellow-600 bg-yellow-100 rounded-full py-1 px-4 inline-block">Color Amarillo</p>
+                </div>
+                <div id="details-preprimario" class="details-section bg-gray-50 px-6">
+                    <div class="py-6 border-t border-gray-200">
+                        <h4 class="font-bold text-lg mb-3 text-gray-700">Documentación Requerida:</h4>
+                        <ul class="text-left space-y-2 text-gray-600 list-disc list-inside">
+                            <li>Fólder oficio amarillo con gancho.</li>
+                            <li>Certificado de nacimiento (reciente).</li>
+                            <li>Fotocopia del DPI de los padres.</li>
+                            <li>2 fotografías tamaño cédula.</li>
+                            <li>Constancia de código personal.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="card-primario" class="interactive-card bg-white rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer overflow-hidden border-t-8 border-red-400">
+                <div class="p-6 text-center">
+                    <div class="text-red-500 mb-4">
+                        <span class="icon-folder"></span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Nivel Primario</h3>
+                    <p class="text-lg font-semibold text-red-600 bg-red-100 rounded-full py-1 px-4 inline-block">Color Rojo</p>
+                </div>
+                 <div id="details-primario" class="details-section bg-gray-50 px-6">
+                    <div class="py-6 border-t border-gray-200">
+                        <h4 class="font-bold text-lg mb-3 text-gray-700">Documentación Requerida:</h4>
+                        <ul class="text-left space-y-2 text-gray-600 list-disc list-inside">
+                            <li>Fólder oficio rojo con gancho.</li>
+                            <li>Certificado de nacimiento (reciente).</li>
+                            <li>Certificado de estudios del año anterior.</li>
+                            <li>Fotocopia del DPI de los padres.</li>
+                            <li>2 fotografías tamaño cédula.</li>
+                            <li>Constancia de código personal.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="card-basico" class="interactive-card bg-white rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer overflow-hidden border-t-8 border-green-400">
+                <div class="p-6 text-center">
+                     <div class="text-green-500 mb-4">
+                        <span class="icon-folder"></span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Nivel Básico</h3>
+                    <p class="text-lg font-semibold text-green-600 bg-green-100 rounded-full py-1 px-4 inline-block">Color Verde</p>
+                </div>
+                <div id="details-basico" class="details-section bg-gray-50 px-6">
+                    <div class="py-6 border-t border-gray-200">
+                        <h4 class="font-bold text-lg mb-3 text-gray-700">Documentación Requerida:</h4>
+                        <ul class="text-left space-y-2 text-gray-600 list-disc list-inside">
+                            <li>Fólder oficio verde con gancho.</li>
+                            <li>Certificado de nacimiento (reciente).</li>
+                            <li>Diploma de 6º Primaria.</li>
+                            <li>Certificado de estudios del año anterior.</li>
+                            <li>Fotocopia del DPI de los padres.</li>
+                            <li>2 fotografías tamaño cédula.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        
+        <footer class="text-center mt-16 text-gray-400 text-sm">
+            <p>Por favor, asegúrese de traer todos los documentos para agilizar el proceso.</p>
+            <p>&copy; 2025 Institución Educativa. Todos los derechos reservados.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = [
+                { cardId: 'card-preprimario', detailsId: 'details-preprimario' },
+                { cardId: 'card-primario', detailsId: 'details-primario' },
+                { cardId: 'card-basico', detailsId: 'details-basico' }
+            ];
+
+            cards.forEach(item => {
+                const card = document.getElementById(item.cardId);
+                const details = document.getElementById(item.detailsId);
+
+                if (card && details) {
+                    card.addEventListener('click', () => {
+                        const isCurrentlyOpen = details.classList.contains('open');
+                        
+                        document.querySelectorAll('.details-section').forEach(section => {
+                            section.classList.remove('open');
+                        });
+                        
+                        if (!isCurrentlyOpen) {
+                            details.classList.add('open');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
